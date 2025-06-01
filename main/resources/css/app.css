@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Tags */
+  body {
+  }
+  div {
+    @apply text-white;
+  }
+}
+@layer components {
+  /* classes */
+  .active {
+    @apply !text-frontend-highlight-4;
+  }
+  .btnStyle {
+    @apply text-frontend-dark-9 hover:text-frontend-dark-1 bg-frontend-highlight-4 hover:bg-frontend-dark-7 font-bold;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
