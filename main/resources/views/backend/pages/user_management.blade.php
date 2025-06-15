@@ -11,217 +11,215 @@
 			Add User
 		</button>
 	</div>
+</div>
+<!-- Add User Form Model -->
+<div id="addUserFormModel" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center">
+	<div class="bg-frontend-dark-9 w-full max-w-2xl mx-auto rounded-xl shadow-lg p-6 relative">
 
+		<!-- Close Button -->
+		<button onclick="closeUserForm('addUserFormModel')" class="absolute top-4 right-4 text-frontend-dark-3 hover:text-red-400 text-xl font-bold">
+			<x-icon_lucid name="x" class="w-6 h-6" stroke-width="3" />
+		</button>
 
-	<!-- Add User Form Modal -->
-	<div id="addUserFormModel" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center">
-		<div class="bg-frontend-dark-9 w-full max-w-2xl mx-auto rounded-xl shadow-lg p-6 relative">
+		<h2 class="text-xl font-bold text-frontend-highlight-4 mb-6">Add New User</h2>
 
-			<!-- Close Button -->
-			<button onclick="closeUserForm('addUserFormModel')" class="absolute top-4 right-4 text-frontend-dark-3 hover:text-red-400 text-xl font-bold">
-				&times;
-			</button>
+		<form action="{{route('admin.dashboard.user_management.addUser')}}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+			@csrf
 
-			<h2 class="text-xl font-bold text-frontend-highlight-4 mb-6">Add New User</h2>
+			<!-- Username -->
+			<div>
+				<label class="block text-sm mb-1">Username</label>
+				<input type="text" name="username" required class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-			<form action="{{route('admin.dashboard.user_management.addUser')}}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-				@csrf
+			<!-- Email -->
+			<div>
+				<label class="block text-sm mb-1">Email</label>
+				<input type="email" name="email" required class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- Username -->
-				<div>
-					<label class="block text-sm mb-1">Username</label>
-					<input type="text" name="username" required class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
+			<!-- First Name -->
+			<div>
+				<label class="block text-sm mb-1">First Name</label>
+				<input type="text" name="first_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- Email -->
-				<div>
-					<label class="block text-sm mb-1">Email</label>
-					<input type="email" name="email" required class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
+			<!-- Last Name -->
+			<div>
+				<label class="block text-sm mb-1">Last Name</label>
+				<input type="text" name="last_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- First Name -->
-				<div>
-					<label class="block text-sm mb-1">First Name</label>
-					<input type="text" name="first_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
+			<!-- Display Name -->
+			<div class="md:col-span-2">
+				<label class="block text-sm mb-1">Display Name</label>
+				<input type="text" name="display_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- Last Name -->
-				<div>
-					<label class="block text-sm mb-1">Last Name</label>
-					<input type="text" name="last_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
+			<!-- Phone -->
+			<div class="md:col-span-2">
+				<label class="block text-sm mb-1">Phone</label>
+				<input type="tel" name="phone" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- Display Name -->
-				<div class="md:col-span-2">
-					<label class="block text-sm mb-1">Display Name</label>
-					<input type="text" name="display_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
-
-				<!-- Phone -->
-				<div class="md:col-span-2">
-					<label class="block text-sm mb-1">Phone</label>
-					<input type="tel" name="phone" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
-
-				<!-- Password -->
-				<div>
-					<label for="password" class="block text-sm font-medium mb-1">Password</label>
-					<div class="relative">
-						<input type="password" id="password" name="password" required class="w-full pr-10 bg-frontend-dark-6 border border-frontend-dark-6 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 transition">
-						<button type="button" onclick="togglePassword('password', 'eyeNew')" class="absolute inset-y-0 right-2 flex items-center text-frontend-dark-4 hover:text-frontend-highlight-4">
-							<svg id="eyeNew" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-							</svg>
-						</button>
-					</div>
-				</div>
-
-				<!-- Confirm Password -->
-				<div>
-					<label for="password_confirmation" class="block text-sm font-medium mb-1">Confirm Password</label>
-					<div class="relative">
-						<input type="password" id="password_confirmation" name="password_confirmation" required class="w-full pr-10 bg-frontend-dark-6 border border-frontend-dark-6 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 transition">
-						<button type="button" onclick="togglePassword('password_confirmation', 'eyeConfirm')" class="absolute inset-y-0 right-2 flex items-center text-frontend-dark-4 hover:text-frontend-highlight-4">
-							<svg id="eyeConfirm" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-							</svg>
-						</button>
-					</div>
-				</div>
-
-				<!-- Role -->
-				<div>
-					<label class="block text-sm mb-1">Role</label>
-					<select name="role" required class="w-full bg-frontend-dark-7 text-white border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-						<option value="admin">Admin</option>
-						<option value="user">User</option>
-					</select>
-				</div>
-
-				<!-- Status -->
-				<div>
-					<label class="block text-sm mb-1">Status</label>
-					<select name="status" required class="w-full bg-frontend-dark-7 text-white border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-						<option value="1">Active</option>
-						<option value="0">Disabled</option>
-					</select>
-				</div>
-
-				<!-- Submit -->
-				<div class="md:col-span-2 mt-4">
-					<button type="submit" class="w-full btnStyle py-2 rounded-full transition">
-						Create User
+			<!-- Password -->
+			<div>
+				<label for="password" class="block text-sm font-medium mb-1">Password</label>
+				<div class="relative">
+					<input type="password" id="password" name="password" required class="w-full pr-10 bg-frontend-dark-6 border border-frontend-dark-6 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 transition">
+					<button type="button" onclick="togglePassword('password', 'eyeNew')" class="absolute inset-y-0 right-2 flex items-center text-frontend-dark-4 hover:text-frontend-highlight-4">
+						<svg id="eyeNew" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+						</svg>
 					</button>
 				</div>
-			</form>
-		</div>
+			</div>
+
+			<!-- Confirm Password -->
+			<div>
+				<label for="password_confirmation" class="block text-sm font-medium mb-1">Confirm Password</label>
+				<div class="relative">
+					<input type="password" id="password_confirmation" name="password_confirmation" required class="w-full pr-10 bg-frontend-dark-6 border border-frontend-dark-6 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 transition">
+					<button type="button" onclick="togglePassword('password_confirmation', 'eyeConfirm')" class="absolute inset-y-0 right-2 flex items-center text-frontend-dark-4 hover:text-frontend-highlight-4">
+						<svg id="eyeConfirm" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+						</svg>
+					</button>
+				</div>
+			</div>
+
+			<!-- Role -->
+			<div>
+				<label class="block text-sm mb-1">Role</label>
+				<select name="role" required class="w-full bg-frontend-dark-7 text-white border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+					<option value="admin">Admin</option>
+					<option value="user" selected>User</option>
+				</select>
+			</div>
+
+			<!-- Status -->
+			<div>
+				<label class="block text-sm mb-1">Status</label>
+				<select name="status" required class="w-full bg-frontend-dark-7 text-white border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+					<option value="1">Active</option>
+					<option value="0" selected>Disabled</option>
+				</select>
+			</div>
+
+			<!-- Submit -->
+			<div class="md:col-span-2 mt-4">
+				<button type="submit" class="w-full btnStyle py-2 rounded-full transition">
+					Create User
+				</button>
+			</div>
+		</form>
 	</div>
-	<!-- Edit User Form Model -->
-	<div id="editUserFormModel" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center">
-		<div class="bg-frontend-dark-9 w-full max-w-2xl mx-auto rounded-xl shadow-lg p-6 relative">
+</div>
+<!-- Edit User Form Model -->
+<div id="editUserFormModel" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center">
+	<div class="bg-frontend-dark-9 w-full max-w-2xl mx-auto rounded-xl shadow-lg p-6 relative">
 
-			<!-- Close Button -->
-			<button onclick="closeUserForm('editUserFormModel')" class="absolute top-4 right-4 text-frontend-dark-3 hover:text-red-400 text-xl font-bold">
-				&times;
-			</button>
+		<!-- Close Button -->
+		<button onclick="closeUserForm('editUserFormModel')" class="absolute top-4 right-4 text-frontend-dark-3 hover:text-red-400 text-xl font-bold">
+			&times;
+		</button>
 
-			<h2 class="text-xl font-bold text-frontend-highlight-4 mb-6">Add New User</h2>
+		<h2 class="text-xl font-bold text-frontend-highlight-4 mb-6">Add New User</h2>
 
-			<form action="" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-				@csrf
+		<form action="" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+			@csrf
 
-				<!-- Username -->
-				<div>
-					<label class="block text-sm mb-1">Username</label>
-					<input type="text" name="username" required class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
+			<!-- Username -->
+			<div>
+				<label class="block text-sm mb-1">Username</label>
+				<input type="text" name="username" required class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- Email -->
-				<div>
-					<label class="block text-sm mb-1">Email</label>
-					<input type="email" name="email" required class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
+			<!-- Email -->
+			<div>
+				<label class="block text-sm mb-1">Email</label>
+				<input type="email" name="email" required class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- First Name -->
-				<div>
-					<label class="block text-sm mb-1">First Name</label>
-					<input type="text" name="first_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
+			<!-- First Name -->
+			<div>
+				<label class="block text-sm mb-1">First Name</label>
+				<input type="text" name="first_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- Last Name -->
-				<div>
-					<label class="block text-sm mb-1">Last Name</label>
-					<input type="text" name="last_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
+			<!-- Last Name -->
+			<div>
+				<label class="block text-sm mb-1">Last Name</label>
+				<input type="text" name="last_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- Display Name -->
-				<div class="md:col-span-2">
-					<label class="block text-sm mb-1">Display Name</label>
-					<input type="text" name="display_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
+			<!-- Display Name -->
+			<div class="md:col-span-2">
+				<label class="block text-sm mb-1">Display Name</label>
+				<input type="text" name="display_name" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- Phone -->
-				<div class="md:col-span-2">
-					<label class="block text-sm mb-1">Phone</label>
-					<input type="tel" name="phone" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-				</div>
+			<!-- Phone -->
+			<div class="md:col-span-2">
+				<label class="block text-sm mb-1">Phone</label>
+				<input type="tel" name="phone" class="w-full bg-frontend-dark-7 border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+			</div>
 
-				<!-- Password -->
-				<div>
-					<label for="password" class="block text-sm font-medium mb-1">Password</label>
-					<div class="relative">
-						<input type="password" id="password" name="password" required class="w-full pr-10 bg-frontend-dark-6 border border-frontend-dark-6 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 transition">
-						<button type="button" onclick="togglePassword('password', 'eyeNew')" class="absolute inset-y-0 right-2 flex items-center text-frontend-dark-4 hover:text-frontend-highlight-4">
-							<svg id="eyeNew" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-							</svg>
-						</button>
-					</div>
-				</div>
-
-				<!-- Confirm Password -->
-				<div>
-					<label for="password_confirmation" class="block text-sm font-medium mb-1">Confirm Password</label>
-					<div class="relative">
-						<input type="password" id="password_confirmation" name="password_confirmation" required class="w-full pr-10 bg-frontend-dark-6 border border-frontend-dark-6 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 transition">
-						<button type="button" onclick="togglePassword('password_confirmation', 'eyeConfirm')" class="absolute inset-y-0 right-2 flex items-center text-frontend-dark-4 hover:text-frontend-highlight-4">
-							<svg id="eyeConfirm" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-							</svg>
-						</button>
-					</div>
-				</div>
-
-				<!-- Role -->
-				<div>
-					<label class="block text-sm mb-1">Role</label>
-					<select name="role" required class="w-full bg-frontend-dark-7 text-white border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-						<option value="admin">Admin</option>
-						<option value="user">User</option>
-					</select>
-				</div>
-
-				<!-- Status -->
-				<div>
-					<label class="block text-sm mb-1">Status</label>
-					<select name="status" required class="w-full bg-frontend-dark-7 text-white border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
-						<option value="1">Active</option>
-						<option value="0">Disabled</option>
-					</select>
-				</div>
-
-				<!-- Submit -->
-				<div class="md:col-span-2 mt-4">
-					<button type="submit" class="w-full btnStyle py-2 rounded-full transition">
-						Create User
+			<!-- Password -->
+			<div>
+				<label for="password" class="block text-sm font-medium mb-1">Password</label>
+				<div class="relative">
+					<input type="password" id="password" name="password" required class="w-full pr-10 bg-frontend-dark-6 border border-frontend-dark-6 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 transition">
+					<button type="button" onclick="togglePassword('password', 'eyeNew')" class="absolute inset-y-0 right-2 flex items-center text-frontend-dark-4 hover:text-frontend-highlight-4">
+						<svg id="eyeNew" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+						</svg>
 					</button>
 				</div>
-			</form>
-		</div>
+			</div>
+
+			<!-- Confirm Password -->
+			<div>
+				<label for="password_confirmation" class="block text-sm font-medium mb-1">Confirm Password</label>
+				<div class="relative">
+					<input type="password" id="password_confirmation" name="password_confirmation" required class="w-full pr-10 bg-frontend-dark-6 border border-frontend-dark-6 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 transition">
+					<button type="button" onclick="togglePassword('password_confirmation', 'eyeConfirm')" class="absolute inset-y-0 right-2 flex items-center text-frontend-dark-4 hover:text-frontend-highlight-4">
+						<svg id="eyeConfirm" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+						</svg>
+					</button>
+				</div>
+			</div>
+
+			<!-- Role -->
+			<div>
+				<label class="block text-sm mb-1">Role</label>
+				<select name="role" required class="w-full bg-frontend-dark-7 text-white border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+					<option value="admin">Admin</option>
+					<option value="user">User</option>
+				</select>
+			</div>
+
+			<!-- Status -->
+			<div>
+				<label class="block text-sm mb-1">Status</label>
+				<select name="status" required class="w-full bg-frontend-dark-7 text-white border border-frontend-dark-6 rounded-md px-4 py-2 focus:ring-2 focus:ring-frontend-highlight-4">
+					<option value="1">Active</option>
+					<option value="0">Disabled</option>
+				</select>
+			</div>
+
+			<!-- Submit -->
+			<div class="md:col-span-2 mt-4">
+				<button type="submit" class="w-full btnStyle py-2 rounded-full transition">
+					Create User
+				</button>
+			</div>
+		</form>
 	</div>
 </div>
 @endsection
@@ -245,15 +243,17 @@
 </script>
 <!-- Toggle password script Start-->
 
+<!-- Open/Close Start-->
 <script>
 	function openUserForm(inputId) {
-    document.getElementById(inputId).classList.remove('hidden');
+		document.getElementById(inputId).classList.remove('hidden');
     document.getElementById(inputId).classList.add('flex');
   }
-
+	
   function closeUserForm(inputId) {
-    document.getElementById(inputId).classList.remove('flex');
+		document.getElementById(inputId).classList.remove('flex');
     document.getElementById(inputId).classList.add('hidden');
   }
 </script>
+<!-- Open/Close Start-->
 @endsection

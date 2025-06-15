@@ -53,7 +53,7 @@
 
 			<!-- Submit Button -->
 			<div class="pt-3">
-				<button type="submit" class="w-full btnStyle py-2 rounded-full transition">
+				<button type="submit" class="w-full btnStyle py-2 rounded-full">
 					Sign Up
 				</button>
 			</div>

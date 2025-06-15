@@ -15,8 +15,17 @@
   .active {
     @apply !text-frontend-highlight-4;
   }
+  .headerPageLinks {
+    @apply md:!px-[8px] lg:!px-[15px] !py-[5px] lg:!py-[6px] md:!text-[16px] lg:!text-[17px] font-bold rounded-full tracking-wider hover:!text-frontend-dark-9 hover:!bg-frontend-highlight-4 transition-all ease-linear duration-300;
+  }
+  .headerBtns {
+    @apply !px-[10px] lg:!px-[15px] !py-[5px] lg:!py-[6px] md:!text-[16px] lg:!text-[17px] rounded-full;
+  }
   .btnStyle {
-    @apply text-frontend-dark-9 hover:text-frontend-dark-1 bg-frontend-highlight-4 hover:bg-frontend-dark-7 font-bold;
+    @apply !text-frontend-dark-9 hover:!text-frontend-dark-2 !bg-frontend-highlight-4 hover:!bg-frontend-dark-7 font-bold tracking-wider transition-all ease-linear duration-300;
+  }
+  .btnStyleGrp {
+    @apply !text-frontend-dark-9 group-hover:!text-frontend-dark-2 !bg-frontend-highlight-4 group-hover:!bg-frontend-dark-7 tracking-wider transition-all ease-linear duration-300;
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;

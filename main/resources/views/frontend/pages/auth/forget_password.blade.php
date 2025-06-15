@@ -24,7 +24,7 @@
 
 			<!-- Submit Button -->
 			<div>
-				<button type="submit" class="w-full btnStyle py-2 px-4 rounded-full transition">
+				<button type="submit" class="w-full btnStyle py-2 px-4 rounded-full">
 					Send Password Reset Link
 				</button>
 			</div>

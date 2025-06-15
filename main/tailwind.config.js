@@ -50,21 +50,26 @@ export default {
             8: "#1f2937",
             9: "#111827",
           },
+          popupmsg: {
+            lightsuccess: "#22c55e",
+            darksuccess: "#105e2d",
+            lighterror: "#ef4444",
+            darkerror: "#911414",
+          },
         },
-        // myindigo: {
-        // 	100: "#d1e2e0",
-        // 	200: "#a3c5c1",
-        // 	300: "#74a9a3",
-        // 	400: "#468c84",
-        // 	500: "#186f65",
-        // 	600: "#135951",
-        // 	700: "#0e433d",
-        // 	800: "#0a2c28",
-        // 	900: "#051614",
-        // },
       },
       fontFamily: {
         sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+      },
+      animation: {
+        "spin-slow": "spin 2.5s linear infinite",
+        "counter-spin": "counterSpin 2.5s linear infinite",
+      },
+      keyframes: {
+        counterSpin: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(-360deg)" },
+        },
       },
     },
   },

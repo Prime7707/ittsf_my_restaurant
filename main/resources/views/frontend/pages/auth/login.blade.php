@@ -12,15 +12,15 @@
 			@csrf
 			<!-- Email -->
 			<div>
-				<label for="email" class="block text-sm font-medium text-frontend-dark-2 mb-1">Email Address</label>
-				<input type="email" name="email" id="email" required class="w-full px-4 py-2 rounded-md bg-frontend-dark-7 text-white border border-frontend-dark-6 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 focus:border-transparent transition" autofocus>
+				<label for="username" class="block text-sm font-medium text-frontend-dark-2 mb-1">Email or Username</label>
+				<input type="text" name="username" id="username" class="w-full px-4 py-2 rounded-md bg-frontend-dark-7 text-white border border-frontend-dark-6 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 focus:border-transparent transition" autofocus>
 			</div>
 
 			<!-- Password -->
 			<div>
 				<label for="password" class="block text-sm font-medium text-frontend-dark-2 mb-1">Password</label>
 				<div class="relative">
-					<input type="password" name="password" id="password" required class="w-full px-4 py-2 rounded-md bg-frontend-dark-7 text-white border border-frontend-dark-6 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 focus:border-transparent transition pr-10">
+					<input type="password" name="password" id="password" class="w-full px-4 py-2 rounded-md bg-frontend-dark-7 text-white border border-frontend-dark-6 focus:outline-none focus:ring-2 focus:ring-frontend-highlight-4 focus:border-transparent transition pr-10">
 					<button type="button" onclick="togglePassword('password', 'eye1')" class="absolute inset-y-0 right-2 flex items-center text-frontend-dark-4 hover:text-frontend-highlight-4">
 						<svg id="eye1" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -41,7 +41,7 @@
 
 			<!-- Submit Button -->
 			<div class="pt-3">
-				<button type="submit" class="w-full btnStyle py-2 rounded-full transition-all duration-150 ease-linear">
+				<button type="submit" class="w-full btnStyle py-2 rounded-full duration-150 ease-linear">
 					Login
 				</button>
 			</div>

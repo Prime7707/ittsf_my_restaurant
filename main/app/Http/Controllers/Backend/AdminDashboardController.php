@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
 
 class AdminDashboardController extends Controller
 {
-	public function index(): View
+	public function dashboardIndex(): View
 	{
 		$title = "Admin Dashboard";
 		return View('backend.pages.dashboard', compact('title'));
@@ -66,12 +66,12 @@ class AdminDashboardController extends Controller
 
 	public function userManagement(): View
 	{
-		$Users = User::get()->all();
+		$users = User::get()->all();
 		$title = "User Management";
-		return View('backend.pages.user_management', compact('title'));
+		return View('backend.pages.user_management', compact('title', 'users'));
 	}
 
-	public function addUser(Request $request): RedirectResponse
+	public function userAdd(Request $request): RedirectResponse
 	{
 		$request->validate([
 			'username' => ['required', 'string', 'max:255'],
@@ -84,6 +84,34 @@ class AdminDashboardController extends Controller
 		]);
 
 		$user = User::create([
+			'username' => $request->username,
+			'email' => $request->email,
+			'password' => Hash::make($request->password),
+			'first_name' => $request->first_name,
+			'last_name' => $request->last_name,
+			'display_name' => $request->display_name,
+			'phone' => $request->phone,
+			'role' => Str::lower($request->role),
+			'status' => $request->status,
+		]);
+
+		event(new Registered($user));
+
+		return redirect()->back();
+	}
+	public function userUpdate(Request $request, User $userid): RedirectResponse
+	{
+		$request->validate([
+			'username' => ['required', 'string', 'max:255'],
+			'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+			'password' => ['required', 'confirmed', Rules\Password::defaults()],
+			'first_name' => ['nullable', 'string'],
+			'last_name' => ['nullable', 'string'],
+			'display_name' => ['nullable', 'string'],
+			'phone' => ['nullable', 'string'],
+		]);
+
+		$user = User::where()->update([
 			'username' => $request->username,
 			'email' => $request->email,
 			'password' => Hash::make($request->password),
